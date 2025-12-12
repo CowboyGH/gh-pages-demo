@@ -24,10 +24,10 @@
     "eject": "react-scripts eject",
     "serve": "json-server --watch ./src/server/db/index.js --routes ./src/server/routes.json --port 3001",
     "save-json-api": "node ./src/server/scripts/save-json-api.js",
-    "homepage": "https://cowboygh.github.io/gh-pages-demo",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://cowboygh.github.io/gh-pages-demo",
   "eslintConfig": {
     "extends": [
       "react-app",
