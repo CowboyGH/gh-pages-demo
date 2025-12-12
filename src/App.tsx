@@ -1,23 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import api, { RESPONSE_DATA } from './api';
 import './App.css';
 
 function App() {
+  const [data, setData] = useState<RESPONSE_DATA>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get.data();
+        setData(response);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {data ? <p>{data.greeting}</p> : 'Loading...'}
       </header>
     </div>
   );
